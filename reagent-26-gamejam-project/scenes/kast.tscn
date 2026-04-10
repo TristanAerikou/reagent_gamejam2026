@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dnjk10cb4ew5e"]
+
+[ext_resource type="Texture2D" uid="uid://qjgahqsiscw5" path="res://assets/TopDownHouse_FurnitureState1.png" id="1_crqsw"]
+[ext_resource type="Script" uid="uid://mxrom0skxkx8" path="res://scripts/kast_script.gd" id="1_xx6tl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xx6tl"]
+size = Vector2(21, 14)
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=1728747016]
+script = ExtResource("1_xx6tl")
+
+[node name="Kast_Sprite" type="Sprite2D" parent="." unique_id=1617566149]
+texture = ExtResource("1_crqsw")
+region_enabled = true
+region_rect = Rect2(0, 112, 32, 48)
+
+[node name="Kast_Hitbox" type="CollisionShape2D" parent="." unique_id=996296138]
+position = Vector2(0.5, 7)
+shape = SubResource("RectangleShape2D_xx6tl")
+
+[node name="kast_items" type="Sprite2D" parent="." unique_id=1251584021]

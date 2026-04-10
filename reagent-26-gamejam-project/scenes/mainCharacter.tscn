@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://c6ebe5a80gyxc" path="res://scripts/character_body_2d.gd" id="1_0n537"]
 [ext_resource type="Texture2D" uid="uid://djy742pmituh7" path="res://assets/TopDownHouse_SmallItems.png" id="2_trh3t"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0n537"]
+radius = 5.0990195
+
 [node name="Node2D" type="Node2D" unique_id=1772965135]
 position = Vector2(0, 1)
 
@@ -13,3 +16,6 @@ script = ExtResource("1_0n537")
 texture = ExtResource("2_trh3t")
 region_enabled = true
 region_rect = Rect2(63.923264, 3.4622173, 15.478302, 12.828619)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1946150490]
+shape = SubResource("CircleShape2D_0n537")
