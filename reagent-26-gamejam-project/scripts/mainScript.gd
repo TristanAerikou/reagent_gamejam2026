@@ -22,8 +22,12 @@ enum Opberg {KAST, TAFEL, KLEINKASTJE}
 	$Item_Opberg/Items/Kaas
 ]
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# BELANGRIJK:
+	# Als we willen potions maken, gaan we moeten bijhouden welke items er effectief in het spel zitten.
+	# Als je de code van plaatsOpbergRuimtes() doorleest, zie je dat er uit de originele lijst items worden verwijderd.
+	# Fix: steek de gebruikte items in een lijst die ook globaal wordt bijgehouden.
+	
 	randomize()
 	plaatsOpbergRuimtes(plaatsen, opberg_textures, item_textures)
 		
