@@ -1,5 +1,7 @@
 extends Node2D
+class_name mainScript
 
+enum Ingredient {SOEP, WIJN, ZOUT}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

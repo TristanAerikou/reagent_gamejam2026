@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xx6tl"]
 size = Vector2(21, 14)
 
-[node name="StaticBody2D" type="StaticBody2D" unique_id=1728747016]
+[node name="Kast" type="StaticBody2D" unique_id=1728747016]
 script = ExtResource("1_xx6tl")
 
 [node name="Kast_Sprite" type="Sprite2D" parent="." unique_id=1617566149]
@@ -18,4 +18,5 @@ region_rect = Rect2(0, 112, 32, 48)
 position = Vector2(0.5, 7)
 shape = SubResource("RectangleShape2D_xx6tl")
 
-[node name="kast_items" type="Sprite2D" parent="." unique_id=1251584021]
+[node name="Item_Sprite" type="Sprite2D" parent="." unique_id=1251584021]
+position = Vector2(0, -18)
