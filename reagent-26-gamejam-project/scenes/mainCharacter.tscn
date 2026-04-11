@@ -221,7 +221,6 @@ animations = [{
 radius = 7.0
 
 [node name="Node2D" type="Node2D" unique_id=1772965135]
-position = Vector2(0, 1)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=469250380]
 script = ExtResource("1_0n537")

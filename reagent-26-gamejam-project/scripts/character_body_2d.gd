@@ -9,14 +9,14 @@ func get_input():
 	return input_direction
 
 func change_sprite(direction):
-	var walking_left = Vector2(-1.0,0.0)
-	var walking_right = Vector2(1.0,0.0)
-	var walking_up = Vector2(0.0,-1.0)
-	var walking_down = Vector2(0.0,1.0)
-	var idle = Vector2(0.0,0.0)
+	var walking_left = Vector2(-1.0, 0.0)
+	var walking_right = Vector2(1.0, 0.0)
+	var walking_up = Vector2(0.0, -1.0)
+	var walking_down = Vector2(0.0, 1.0)
+	var idle = Vector2(0.0, 0.0)
 	match direction:
 		idle:
-			match $AnimatedSprite2D.animation:
+			match$AnimatedSprite2D.animation:
 				"player_walking_left":
 					$AnimatedSprite2D.animation = "player_idle_left"
 				"player_walking_right":
