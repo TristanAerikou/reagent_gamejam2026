@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dnlgi0qj0hynr" path="res://scenes/mainCharacter.tscn" id="3_7ykc4"]
 [ext_resource type="Texture2D" uid="uid://qjgahqsiscw5" path="res://assets/TopDownHouse_FurnitureState1.png" id="6_c16ls"]
 [ext_resource type="PackedScene" uid="uid://dnjk10cb4ew5e" path="res://scenes/kast.tscn" id="6_rt2n2"]
+[ext_resource type="Script" uid="uid://dn1d4kcmxqg11" path="res://scripts/opberg.gd" id="7_c16ls"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pu3yx"]
 texture = ExtResource("1_pw63i")
@@ -243,6 +244,21 @@ texture = ExtResource("2_7ykc4")
 sources/0 = SubResource("TileSetAtlasSource_pu3yx")
 sources/1 = SubResource("TileSetAtlasSource_gubc5")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gubc5"]
+atlas = ExtResource("2_7ykc4")
+region = Rect2(80, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt2n2"]
+atlas = ExtResource("2_7ykc4")
+region = Rect2(48, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c16ls"]
+atlas = ExtResource("2_7ykc4")
+region = Rect2(16, 80, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18nlu"]
+size = Vector2(21, 14)
+
 [node name="Root" type="Node2D" unique_id=550315238]
 script = ExtResource("1_rt2n2")
 
@@ -266,6 +282,22 @@ zoom = Vector2(4, 4)
 [node name="Player" parent="." unique_id=1772965135 instance=ExtResource("3_7ykc4")]
 position = Vector2(48, -16)
 
+[node name="Kasten" type="Node" parent="." unique_id=1499370478]
+
+[node name="SoepKast" parent="Kasten" unique_id=1445545833 instance=ExtResource("6_rt2n2")]
+position = Vector2(-244, -64)
+item = SubResource("AtlasTexture_gubc5")
+
+[node name="WijnKast" parent="Kasten" unique_id=1728747016 instance=ExtResource("6_rt2n2")]
+position = Vector2(-272, -64)
+item_type = 1
+item = SubResource("AtlasTexture_rt2n2")
+
+[node name="ZoutKast" parent="Kasten" unique_id=770430522 instance=ExtResource("6_rt2n2")]
+position = Vector2(-244, 48)
+item_type = 2
+item = SubResource("AtlasTexture_c16ls")
+
 [node name="Item_Opberg" type="Node" parent="." unique_id=1252335301]
 
 [node name="Textures" type="Node" parent="Item_Opberg" unique_id=846615932]
@@ -287,9 +319,6 @@ position = Vector2(432, 0)
 texture = ExtResource("6_c16ls")
 region_enabled = true
 region_rect = Rect2(48, 0, 16, 32)
-
-[node name="Node2D" type="Node2D" parent="Item_Opberg/Textures/KleinKastje" unique_id=1025411592]
-position = Vector2(0, -8)
 
 [node name="Items" type="Node" parent="Item_Opberg" unique_id=1340062700]
 
@@ -323,5 +352,13 @@ texture = ExtResource("2_7ykc4")
 region_enabled = true
 region_rect = Rect2(80, 0, 16, 16)
 
-[node name="KastTemplate" parent="." unique_id=1724952910 instance=ExtResource("6_rt2n2")]
-position = Vector2(-192, -64)
+[node name="Opberg" type="StaticBody2D" parent="Item_Opberg" unique_id=1269539163]
+position = Vector2(368, 23)
+script = ExtResource("7_c16ls")
+
+[node name="OpbergHitbox" type="CollisionShape2D" parent="Item_Opberg/Opberg" unique_id=2134417562]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_18nlu")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=2109891298]
+position = Vector2(48, -48)
