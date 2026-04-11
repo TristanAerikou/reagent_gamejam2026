@@ -5,7 +5,38 @@
 [ext_resource type="Texture2D" uid="uid://djy742pmituh7" path="res://assets/TopDownHouse_SmallItems.png" id="2_7ykc4"]
 [ext_resource type="PackedScene" uid="uid://dnlgi0qj0hynr" path="res://scenes/mainCharacter.tscn" id="3_7ykc4"]
 [ext_resource type="Texture2D" uid="uid://qjgahqsiscw5" path="res://assets/TopDownHouse_FurnitureState1.png" id="6_c16ls"]
-[ext_resource type="PackedScene" uid="uid://dnjk10cb4ew5e" path="res://scenes/kast.tscn" id="6_rt2n2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gubc5"]
+atlas = ExtResource("6_c16ls")
+region = Rect2(0, 112, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt2n2"]
+atlas = ExtResource("6_c16ls")
+region = Rect2(80, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c16ls"]
+atlas = ExtResource("6_c16ls")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18nlu"]
+atlas = ExtResource("2_7ykc4")
+region = Rect2(16, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1pb6"]
+atlas = ExtResource("2_7ykc4")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wevv"]
+atlas = ExtResource("2_7ykc4")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1cbu"]
+atlas = ExtResource("2_7ykc4")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mngbo"]
+atlas = ExtResource("2_7ykc4")
+region = Rect2(80, 32, 16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pu3yx"]
 texture = ExtResource("1_pw63i")
@@ -245,6 +276,19 @@ sources/1 = SubResource("TileSetAtlasSource_gubc5")
 
 [node name="Root" type="Node2D" unique_id=550315238]
 script = ExtResource("1_rt2n2")
+plaatsen = Array[Vector2i]([Vector2i(112, -48), Vector2i(80, -48), Vector2i(48, -48)])
+opberg_textures = Dictionary[int, AtlasTexture]({
+0: SubResource("AtlasTexture_gubc5"),
+1: SubResource("AtlasTexture_rt2n2"),
+2: SubResource("AtlasTexture_c16ls")
+})
+item_textures = Dictionary[int, AtlasTexture]({
+0: SubResource("AtlasTexture_18nlu"),
+1: SubResource("AtlasTexture_c1pb6"),
+2: SubResource("AtlasTexture_6wevv"),
+3: SubResource("AtlasTexture_e1cbu"),
+4: SubResource("AtlasTexture_mngbo")
+})
 
 [node name="Huis" type="TileMap" parent="." unique_id=1467626897]
 tile_set = SubResource("TileSet_rt2n2")
@@ -265,63 +309,3 @@ zoom = Vector2(4, 4)
 
 [node name="Player" parent="." unique_id=1772965135 instance=ExtResource("3_7ykc4")]
 position = Vector2(48, -16)
-
-[node name="Item_Opberg" type="Node" parent="." unique_id=1252335301]
-
-[node name="Textures" type="Node" parent="Item_Opberg" unique_id=846615932]
-
-[node name="Kast" type="Sprite2D" parent="Item_Opberg/Textures" unique_id=1662917634]
-position = Vector2(368, 0)
-texture = ExtResource("6_c16ls")
-region_enabled = true
-region_rect = Rect2(0, 112, 32, 48)
-
-[node name="Tafel" type="Sprite2D" parent="Item_Opberg/Textures" unique_id=892963625]
-position = Vector2(400, 0)
-texture = ExtResource("6_c16ls")
-region_enabled = true
-region_rect = Rect2(80, 32, 32, 32)
-
-[node name="KleinKastje" type="Sprite2D" parent="Item_Opberg/Textures" unique_id=74492064]
-position = Vector2(432, 0)
-texture = ExtResource("6_c16ls")
-region_enabled = true
-region_rect = Rect2(48, 0, 16, 32)
-
-[node name="Node2D" type="Node2D" parent="Item_Opberg/Textures/KleinKastje" unique_id=1025411592]
-position = Vector2(0, -8)
-
-[node name="Items" type="Node" parent="Item_Opberg" unique_id=1340062700]
-
-[node name="Zout" type="Sprite2D" parent="Item_Opberg/Items" unique_id=1910781251]
-position = Vector2(368, -32)
-texture = ExtResource("2_7ykc4")
-region_enabled = true
-region_rect = Rect2(16, 80, 16, 16)
-
-[node name="Bot" type="Sprite2D" parent="Item_Opberg/Items" unique_id=846573342]
-position = Vector2(384, -32)
-texture = ExtResource("2_7ykc4")
-region_enabled = true
-region_rect = Rect2(0, 32, 16, 16)
-
-[node name="Goudvis" type="Sprite2D" parent="Item_Opberg/Items" unique_id=347797209]
-position = Vector2(400, -32)
-texture = ExtResource("2_7ykc4")
-region_enabled = true
-region_rect = Rect2(48, 48, 16, 16)
-
-[node name="Koekje" type="Sprite2D" parent="Item_Opberg/Items" unique_id=1813294010]
-position = Vector2(416, -32)
-texture = ExtResource("2_7ykc4")
-region_enabled = true
-region_rect = Rect2(16, 32, 16, 16)
-
-[node name="Kaas" type="Sprite2D" parent="Item_Opberg/Items" unique_id=328394352]
-position = Vector2(432, -32)
-texture = ExtResource("2_7ykc4")
-region_enabled = true
-region_rect = Rect2(80, 0, 16, 16)
-
-[node name="KastTemplate" parent="." unique_id=1724952910 instance=ExtResource("6_rt2n2")]
-position = Vector2(-192, -64)
