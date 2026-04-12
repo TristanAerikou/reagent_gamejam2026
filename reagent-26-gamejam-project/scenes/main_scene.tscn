@@ -341,9 +341,16 @@ sources/1 = SubResource("TileSetAtlasSource_gubc5")
 script/source = "extends Timer
 "
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_01n6w"]
+atlas = ExtResource("6_c16ls")
+region = Rect2(80, 256, 48, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6u1mn"]
+size = Vector2(40, 16)
+
 [node name="Root" type="Node2D" unique_id=550315238]
 script = ExtResource("1_rt2n2")
-plaatsen = Array[Vector2i]([Vector2i(112, -48), Vector2i(80, -48), Vector2i(48, -48)])
+plaatsen = Array[Vector2i]([Vector2i(112, -48), Vector2i(80, -48), Vector2i(48, -48), Vector2i(-112, 48), Vector2i(32, 48)])
 opberg_textures = Dictionary[int, AtlasTexture]({
 0: SubResource("AtlasTexture_gubc5"),
 1: SubResource("AtlasTexture_rt2n2"),
@@ -380,11 +387,21 @@ offset_bottom = -41.0
 scale = Vector2(0.75, 0.75)
 
 [node name="Player" parent="." unique_id=1772965135 instance=ExtResource("3_7ykc4")]
-position = Vector2(48, -16)
+position = Vector2(0, -8)
 
 [node name="NextRecipeTimer" type="Timer" parent="." unique_id=951406411]
-wait_time = 2.0
+wait_time = 10.0
 autostart = true
 script = SubResource("GDScript_gubc5")
+
+[node name="Badkuip" type="StaticBody2D" parent="." unique_id=777796932]
+position = Vector2(-104, -24)
+
+[node name="BadkuipTexture" type="Sprite2D" parent="Badkuip" unique_id=1979908912]
+texture = SubResource("AtlasTexture_01n6w")
+
+[node name="BadkuipHitbox" type="CollisionShape2D" parent="Badkuip" unique_id=751462759]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_6u1mn")
 
 [connection signal="timeout" from="NextRecipeTimer" to="." method="_next_order_timeout"]

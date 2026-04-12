@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://wswtaf1xfwkf"]
+
+[ext_resource type="Texture2D" uid="uid://djy742pmituh7" path="res://assets/TopDownHouse_SmallItems.png" id="1_vlord"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hd327"]
+bg_color = Color(0.51731867, 0.3858514, 0.15419188, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlord"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4vyv"]
+atlas = ExtResource("1_vlord")
+region = Rect2(80, 16, 16, 16)
+
+[node name="Margin" type="MarginContainer" unique_id=250697484]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Background" type="PanelContainer" parent="." unique_id=269630095]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hd327")
+
+[node name="HBox" type="HBoxContainer" parent="Background" unique_id=598721478]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Background/HBox" unique_id=1302442526]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vlord")
+
+[node name="OrderImage" type="TextureRect" parent="Background/HBox/PanelContainer" unique_id=1545688695]
+layout_mode = 2
+texture = SubResource("AtlasTexture_n4vyv")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="Ingredients" type="GridContainer" parent="Background/HBox" unique_id=1636148463]
+layout_mode = 2
+columns = 4

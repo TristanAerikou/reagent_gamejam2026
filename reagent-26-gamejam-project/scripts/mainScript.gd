@@ -14,22 +14,25 @@ const order_template = preload("res://scenes/order.tscn")
 @export var order_textures: Dictionary[Order, AtlasTexture]
 
 func _ready() -> void:
-	for p in plaatsen:
+	#voeg 1 starting order toe
+	_next_order_timeout()
+	
+	var rand_ingredient = Ingredient.keys().duplicate()
+	rand_ingredient.shuffle()
+	
+	for pos in len(plaatsen):
 		# nieuwe kast aanmaken
 		var nieuwe_kast = kast_template.instantiate()
-		nieuwe_kast.position = p
+		nieuwe_kast.position = plaatsen[pos]
 		
 		# random
-		var opberg_type = randi_range(0, len(Opberg)-1)
-		var item_type = randi_range(0, len(Ingredient)-1)
-		
-		# opbergruimte texture setten
-		nieuwe_kast.opberg_type = opberg_type
-		nieuwe_kast.opberg_texture = opberg_textures.get(opberg_type)
+		var opberg_type = Opberg.keys().pick_random()
+		nieuwe_kast.opberg_type = Opberg[opberg_type]
+		nieuwe_kast.opberg_texture = opberg_textures[Opberg[opberg_type]]
 		
 		# item texture setten
-		nieuwe_kast.item_type = item_type
-		nieuwe_kast.item_texture = item_textures.get(item_type)
+		nieuwe_kast.item_type = rand_ingredient[pos]
+		nieuwe_kast.item_texture = item_textures.get(Ingredient[rand_ingredient[pos]])
 		
 		add_child(nieuwe_kast)
 
