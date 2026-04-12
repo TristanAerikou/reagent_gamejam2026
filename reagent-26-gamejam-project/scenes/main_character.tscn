@@ -234,3 +234,8 @@ frame_progress = 0.621669
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1946150490]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_0n537")
+
+[node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D" unique_id=1557113938]
+target_position = Vector2(0, 16)
+
+[node name="HeldItem" type="Sprite2D" parent="CharacterBody2D" unique_id=1234073584]
