@@ -1,18 +1,30 @@
 [gd_scene format=3 uid="uid://dnjk10cb4ew5e"]
 
 [ext_resource type="Script" uid="uid://mxrom0skxkx8" path="res://scripts/kast_script.gd" id="1_xx6tl"]
+[ext_resource type="Texture2D" uid="uid://qjgahqsiscw5" path="res://assets/TopDownHouse_FurnitureState1.png" id="2_a2723"]
+[ext_resource type="Texture2D" uid="uid://djy742pmituh7" path="res://assets/TopDownHouse_SmallItems.png" id="3_pfc66"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o11vv"]
+atlas = ExtResource("2_a2723")
+region = Rect2(0, 112, 32, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xx6tl"]
 size = Vector2(21, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06ywo"]
+atlas = ExtResource("3_pfc66")
+region = Rect2(16, 80, 16, 16)
 
 [node name="Kast" type="StaticBody2D" unique_id=1728747016]
 script = ExtResource("1_xx6tl")
 
 [node name="Kast_Sprite" type="Sprite2D" parent="." unique_id=1617566149]
+texture = SubResource("AtlasTexture_o11vv")
 
 [node name="Kast_Hitbox" type="CollisionShape2D" parent="." unique_id=996296138]
-position = Vector2(0, 4.5)
+position = Vector2(0.5000005, 7)
 shape = SubResource("RectangleShape2D_xx6tl")
 
 [node name="Item_Sprite" type="Sprite2D" parent="." unique_id=1251584021]
 position = Vector2(0, -18)
+texture = SubResource("AtlasTexture_06ywo")

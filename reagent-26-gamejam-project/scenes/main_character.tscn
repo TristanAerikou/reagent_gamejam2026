@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dnlgi0qj0hynr"]
 
-[ext_resource type="Script" uid="uid://c6ebe5a80gyxc" path="res://scripts/character_body_2d.gd" id="1_0n537"]
+[ext_resource type="Script" uid="uid://c6ebe5a80gyxc" path="res://scripts/character_controller.gd" id="1_0n537"]
 [ext_resource type="Texture2D" uid="uid://bilmwmod5xplr" path="res://assets/character_idle.png" id="2_0n537"]
 [ext_resource type="Texture2D" uid="uid://ef6lew7y2jhm" path="res://assets/character_idle_flipped.png" id="3_nthm3"]
 [ext_resource type="Texture2D" uid="uid://c8kdvde1xtf8v" path="res://assets/character_walking.png" id="4_kwwav"]
@@ -227,8 +227,10 @@ animations = [{
 radius = 7.0
 
 [node name="Node2D" type="Node2D" unique_id=1772965135]
+y_sort_enabled = true
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=469250380]
+y_sort_enabled = true
 script = ExtResource("1_0n537")
 
 [node name="Control" type="Control" parent="CharacterBody2D" unique_id=177245064]

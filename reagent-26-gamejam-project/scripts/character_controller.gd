@@ -3,38 +3,40 @@ extends CharacterBody2D
 @export var speed = 75
 @onready var raycast = $RayCast2D
 
+# null or mainScript.Ingredient
 var is_carrying
+# null or Array[mainScript.Ingredient]
 
 func get_input():
 	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = input_direction * speed
 	change_sprite(input_direction)
 	
+	if Input.is_action_just_pressed("ui_select"):
+		interact()
+	
 	if not input_direction.is_zero_approx():
 		raycast.target_position = input_direction * 16
 		$HeldItem.position = input_direction * 8
 		
-	# display pickup gui
+func interact():
 	var target = raycast.get_collider()
 	if target != null:
 		if "item_type" in target:
+			$HeldItem.texture = target.item_texture
+			is_carrying = target.item_type
 			$Control.visible = true
 			$Control/Label.text = "Press E to\nPick up object"
+			
 		elif "add_ingredient" in target:
 			$Control.visible = true
 			$Control/Label.text = "Press E to\nDrop off object"
-	else:
-		$Control.visible = false
-				
-	if Input.is_action_just_pressed("ui_select"):
-		if target != null:
-			if "item_type" in target:
-				$HeldItem.texture = target.item_texture
-				is_carrying = target.item_type
-			elif "add_ingredient" in target:
+			if is_carrying != null:
 				target.add_ingredient(is_carrying)
 				is_carrying = null
 				$HeldItem.texture = null
+	else:
+		$Control.visible = false
 
 func change_sprite(direction):
 	var walking_left = Vector2(-1.0, 0.0)
