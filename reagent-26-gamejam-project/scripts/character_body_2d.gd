@@ -14,8 +14,19 @@ func get_input():
 		raycast.target_position = input_direction * 16
 		$HeldItem.position = input_direction * 8
 		
+	# display pickup gui
+	var target = raycast.get_collider()
+	if target != null:
+		if "item_type" in target:
+			$Control.visible = true
+			$Control/Label.text = "Press E to\nPick up object"
+		elif "add_ingredient" in target:
+			$Control.visible = true
+			$Control/Label.text = "Press E to\nDrop off object"
+	else:
+		$Control.visible = false
+				
 	if Input.is_action_just_pressed("ui_select"):
-		var target = raycast.get_collider()
 		if target != null:
 			if "item_type" in target:
 				$HeldItem.texture = target.item_texture

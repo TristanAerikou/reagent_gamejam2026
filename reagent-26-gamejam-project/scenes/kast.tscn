@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://mxrom0skxkx8" path="res://scripts/kast_script.gd" id="1_xx6tl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xx6tl"]
-size = Vector2(21, 14)
+size = Vector2(21, 19)
 
 [node name="Kast" type="StaticBody2D" unique_id=1728747016]
 script = ExtResource("1_xx6tl")
@@ -11,7 +11,7 @@ script = ExtResource("1_xx6tl")
 [node name="Kast_Sprite" type="Sprite2D" parent="." unique_id=1617566149]
 
 [node name="Kast_Hitbox" type="CollisionShape2D" parent="." unique_id=996296138]
-position = Vector2(0.5, 7)
+position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_xx6tl")
 
 [node name="Item_Sprite" type="Sprite2D" parent="." unique_id=1251584021]

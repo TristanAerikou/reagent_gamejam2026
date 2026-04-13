@@ -6,12 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://c8kdvde1xtf8v" path="res://assets/character_walking.png" id="4_kwwav"]
 [ext_resource type="Texture2D" uid="uid://b2w4r06repdl6" path="res://assets/character_walking_flipped.png" id="5_x5162"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0aba"]
-bg_color = Color(0.5734741, 0.3906166, 0.21161973, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogw1n"]
-bg_color = Color(0.81002146, 0.585401, 0.36726806, 1)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_jaax5"]
 atlas = ExtResource("2_0n537")
 region = Rect2(0, 0, 16, 16)
@@ -231,73 +225,6 @@ radius = 7.0
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=469250380]
 script = ExtResource("1_0n537")
 
-[node name="Control" type="Control" parent="CharacterBody2D" unique_id=177245064]
-z_index = 3
-layout_mode = 3
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -18.0
-offset_top = -31.0
-offset_right = 22.0
-offset_bottom = 9.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="OuterBackground" type="PanelContainer" parent="CharacterBody2D/Control" unique_id=1018977919]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -23.0
-offset_top = -11.999998
-offset_right = 46.16501
-offset_bottom = 11.705004
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.6013554, 0.6444297)
-theme_override_styles/panel = SubResource("StyleBoxFlat_k0aba")
-
-[node name="InnerBackground" type="PanelContainer" parent="CharacterBody2D/Control" unique_id=478298750]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -19.0
-offset_top = -9.0
-offset_right = 76.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.3587629, 0.3305857)
-theme_override_styles/panel = SubResource("StyleBoxFlat_ogw1n")
-
-[node name="Label" type="Label" parent="CharacterBody2D/Control" unique_id=171472460]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -10.375
-offset_right = 14.0
-offset_bottom = 4.375
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-theme_override_constants/line_spacing = -2
-theme_override_font_sizes/font_size = 5
-text = "Press E to
-bla bla"
-horizontal_alignment = 1
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1647952571]
 sprite_frames = SubResource("SpriteFrames_4p683")
 animation = &"player_idle_down"
@@ -309,7 +236,6 @@ position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_0n537")
 
 [node name="RayCast2D" type="RayCast2D" parent="CharacterBody2D" unique_id=1557113938]
-scale = Vector2(5, 1)
 target_position = Vector2(0, 16)
 
 [node name="HeldItem" type="Sprite2D" parent="CharacterBody2D" unique_id=1234073584]

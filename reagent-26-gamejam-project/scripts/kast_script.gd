@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-var item_type: mainScript.Ingredient
+@export var item_type: mainScript.Ingredient
 var item_texture: Texture2D
 
 var opberg_type : mainScript.Opberg
