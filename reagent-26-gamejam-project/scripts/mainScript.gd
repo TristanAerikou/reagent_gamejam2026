@@ -16,12 +16,12 @@ func _ready() -> void:
 	#voeg 1 starting order toe
 	_next_order_timeout()
 	
-	var rand_ingredient = Ingredient.values().duplicate()
+	var rand_ingredient := Ingredient.values().duplicate()
 	rand_ingredient.shuffle()
-	var kasten = $Kasten.get_children()
+	var kasten := $Kasten.get_children()
 	
 	for pos in len(kasten):
-		var opberg_type = Opberg.values().pick_random()
+		var opberg_type: Opberg = Opberg.values().pick_random()
 		kasten[pos].opberg_type = opberg_type
 		kasten[pos].opberg_texture = opberg_textures[opberg_type]
 		
@@ -30,7 +30,7 @@ func _ready() -> void:
 		kasten[pos].update_vars()
 
 func _next_order_timeout() -> void:
-	var order = order_template.instantiate()
+	var order := order_template.instantiate()
 	$Camera2D/Orders.add_child(order)
 	
 	var order_type = Order.values().pick_random()
