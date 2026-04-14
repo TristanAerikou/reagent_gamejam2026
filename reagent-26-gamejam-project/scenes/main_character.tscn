@@ -232,7 +232,7 @@ y_sort_enabled = true
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=469250380]
 y_sort_enabled = true
 script = ExtResource("1_0n537")
-speed = 20000
+speed = 15000
 
 [node name="Control" type="Control" parent="CharacterBody2D" unique_id=177245064]
 z_index = 3

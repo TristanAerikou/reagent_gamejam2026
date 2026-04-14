@@ -9,11 +9,11 @@ atlas = ExtResource("2_a2723")
 region = Rect2(0, 112, 32, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xx6tl"]
-size = Vector2(21, 19)
+size = Vector2(21, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_06ywo"]
 atlas = ExtResource("3_pfc66")
-region = Rect2(16, 80, 16, 16)
+region = Rect2(16, 32, 16, 16)
 
 [node name="Kast" type="StaticBody2D" unique_id=1728747016]
 script = ExtResource("1_xx6tl")
@@ -22,7 +22,7 @@ script = ExtResource("1_xx6tl")
 texture = SubResource("AtlasTexture_o11vv")
 
 [node name="Kast_Hitbox" type="CollisionShape2D" parent="." unique_id=996296138]
-position = Vector2(0.5000005, 7)
+position = Vector2(0.5000005, 4)
 shape = SubResource("RectangleShape2D_xx6tl")
 
 [node name="Item_Sprite" type="Sprite2D" parent="." unique_id=1251584021]

@@ -1,21 +1,21 @@
 extends StaticBody2D
 
-# Dictionary[ReceptEnum, Array[mainScript.Ingredient]]
-# ^ godot vindt dit type te ingewikkeld en ik mag het niet gebruiken :(
+const types = preload("res://scripts/global_data.gd")
+const global_data = preload("res://scripts/global_data.tres")
 
-var ingredients: Array[mainScript.Ingredient] = []
+var ingredients: Array[types.Ingredient] = []
 
-func add_ingredient(ingredient: mainScript.Ingredient):
+func add_ingredient(ingredient: types.Ingredient):
 	ingredients.push_back(ingredient)
 
 
 func get_potion_texture(ingredients) -> AtlasTexture:
-	var order_type := mainScript.Order.ORANJE
-	if mainScript.Ingredient.ZOUT in ingredients:
-		order_type = mainScript.Order.GEEL
-	elif mainScript.Ingredient.BOT in ingredients:
-		order_type = mainScript.Order.ROOD
-	elif mainScript.Ingredient.KAAS in ingredients:
-		order_type = mainScript.Order.GEEL
+	var order_type := types.Order.ORANJE
+	if global_data.Ingredient.ZOUT in ingredients:
+		order_type = types.Order.GEEL
+	elif global_data.Ingredient.BOT in ingredients:
+		order_type = types.Order.ROOD
+	elif global_data.Ingredient.KAAS in ingredients:
+		order_type = types.Order.GEEL
 	
-	return get_parent().order_textures[order_type]
+	return global_data.order_textures[order_type]

@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="TextureMap" format=3 uid="uid://dxfqygmfp4buf"]
+
+[ext_resource type="Texture2D" uid="uid://djy742pmituh7" path="res://assets/TopDownHouse_SmallItems.png" id="1_ntdsv"]
+[ext_resource type="Texture2D" uid="uid://qjgahqsiscw5" path="res://assets/TopDownHouse_FurnitureState1.png" id="2_guass"]
+[ext_resource type="Script" uid="uid://c8xn0evadhlf8" path="res://scripts/global_data.gd" id="3_sfobk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18nlu"]
+atlas = ExtResource("1_ntdsv")
+region = Rect2(16, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1pb6"]
+atlas = ExtResource("1_ntdsv")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wevv"]
+atlas = ExtResource("1_ntdsv")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1cbu"]
+atlas = ExtResource("1_ntdsv")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mngbo"]
+atlas = ExtResource("1_ntdsv")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gubc5"]
+atlas = ExtResource("2_guass")
+region = Rect2(0, 112, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt2n2"]
+atlas = ExtResource("2_guass")
+region = Rect2(80, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c16ls"]
+atlas = ExtResource("2_guass")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4w45t"]
+atlas = ExtResource("1_ntdsv")
+region = Rect2(48, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6p65"]
+atlas = ExtResource("1_ntdsv")
+region = Rect2(32, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_si52b"]
+atlas = ExtResource("1_ntdsv")
+region = Rect2(16, 96, 16, 16)
+
+[resource]
+script = ExtResource("3_sfobk")
+opberg_textures = Dictionary[int, AtlasTexture]({
+0: SubResource("AtlasTexture_gubc5"),
+1: SubResource("AtlasTexture_rt2n2"),
+2: SubResource("AtlasTexture_c16ls")
+})
+item_textures = Dictionary[int, AtlasTexture]({
+0: SubResource("AtlasTexture_18nlu"),
+1: SubResource("AtlasTexture_c1pb6"),
+2: SubResource("AtlasTexture_6wevv"),
+3: SubResource("AtlasTexture_e1cbu"),
+4: SubResource("AtlasTexture_mngbo")
+})
+order_textures = Dictionary[int, AtlasTexture]({
+0: SubResource("AtlasTexture_4w45t"),
+1: SubResource("AtlasTexture_r6p65"),
+2: SubResource("AtlasTexture_si52b")
+})
