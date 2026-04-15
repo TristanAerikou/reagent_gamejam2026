@@ -307,6 +307,9 @@ region = Rect2(80, 256, 48, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6u1mn"]
 size = Vector2(40, 16)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18nlu"]
+bg_color = Color(0.21960784, 0.21960784, 0.078431375, 0.69803923)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_6u1mn"]
 atlas = ExtResource("2_7ykc4")
 region = Rect2(0, 96, 16, 16)
@@ -363,6 +366,20 @@ texture = SubResource("AtlasTexture_01n6w")
 [node name="BadkuipHitbox" type="CollisionShape2D" parent="Badkuip" unique_id=751462759]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_6u1mn")
+
+[node name="BadItemBackground" type="PanelContainer" parent="Badkuip" unique_id=165386878]
+offset_left = -18.0
+offset_top = -5.0
+offset_right = 52.0
+offset_bottom = 31.0
+scale = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_18nlu")
+
+[node name="BadItems" type="GridContainer" parent="Badkuip/BadItemBackground" unique_id=428656975]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 4
 
 [node name="Kasten" type="Node" parent="." unique_id=1416709570]
 

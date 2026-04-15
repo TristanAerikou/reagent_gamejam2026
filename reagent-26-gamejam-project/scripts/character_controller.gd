@@ -51,8 +51,7 @@ func interact():
 		
 		if is_carrying is Array and len(is_carrying) == 0:
 			# leeg glas
-			is_carrying = target.ingredients.duplicate()
-			target.ingredients.clear()
+			is_carrying = target.clear_badkuip()
 			$HeldItem.texture = global_data.get_potion_texture(is_carrying)
 			
 		elif is_carrying != null:
