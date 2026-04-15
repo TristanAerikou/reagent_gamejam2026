@@ -343,6 +343,7 @@ offset_top = -81.0
 offset_right = -104.0
 offset_bottom = -41.0
 scale = Vector2(0.75, 0.75)
+metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." unique_id=1772965135 instance=ExtResource("3_7ykc4")]
 position = Vector2(0, -8)
