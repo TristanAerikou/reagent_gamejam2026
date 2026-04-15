@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://wswtaf1xfwkf"]
 
+[ext_resource type="Script" uid="uid://bkxvhr4ffnwuq" path="res://scripts/order.gd" id="1_nramy"]
 [ext_resource type="Texture2D" uid="uid://djy742pmituh7" path="res://assets/TopDownHouse_SmallItems.png" id="1_vlord"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hd327"]
@@ -20,6 +21,7 @@ region = Rect2(80, 16, 16, 16)
 [node name="Margin" type="MarginContainer" unique_id=250697484]
 offset_right = 1152.0
 offset_bottom = 648.0
+script = ExtResource("1_nramy")
 
 [node name="Background" type="PanelContainer" parent="." unique_id=269630095]
 layout_mode = 2

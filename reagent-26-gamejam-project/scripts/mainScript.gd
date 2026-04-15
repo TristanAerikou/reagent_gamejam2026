@@ -26,13 +26,3 @@ func _next_order_timeout() -> void:
 	var order := order_template.instantiate()
 	$Camera2D/Orders.add_child(order)
 	
-	var order_type = global_data.Order.values().pick_random()
-	order.get_node("Background/HBox/PanelContainer/OrderImage").texture = global_data.order_textures[order_type]
-	
-	for ingredient_count in randi_range(1, 4):
-		var ingredient_type = global_data.Ingredient.values().pick_random()
-		
-		var ingredient = TextureRect.new()
-		ingredient.texture = global_data.item_textures[ingredient_type]
-		
-		order.get_node("Background/HBox/Ingredients").add_child(ingredient)

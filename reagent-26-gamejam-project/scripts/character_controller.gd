@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-const global_data = preload("res://scripts/global_data.gd")
+const types = preload("res://scripts/global_data.gd")
+const global_data = preload("res://scripts/global_data.tres")
 
 @export var speed: int
 @onready var raycast = $RayCast2D
@@ -52,7 +53,7 @@ func interact():
 			# leeg glas
 			is_carrying = target.ingredients.duplicate()
 			target.ingredients.clear()
-			$HeldItem.texture = target.get_potion_texture(is_carrying)
+			$HeldItem.texture = global_data.get_potion_texture(is_carrying)
 			
 		elif is_carrying != null:
 			target.add_ingredient(is_carrying)
@@ -63,7 +64,7 @@ func interact():
 	
 	elif target.has_method("submit_potion"):
 		# wc
-		if is_carrying is Array[global_data.Ingredient]:
+		if is_carrying is Array[types.Ingredient]:
 			target.submit_potion(is_carrying)
 		
 		# gooi zowiezo item in uw hand weg, dus ingredienten en leeg glas kan je weggooien zonder indienen

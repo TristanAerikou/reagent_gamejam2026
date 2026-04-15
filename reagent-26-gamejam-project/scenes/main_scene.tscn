@@ -348,7 +348,7 @@ scale = Vector2(0.75, 0.75)
 position = Vector2(0, -8)
 
 [node name="NextRecipeTimer" type="Timer" parent="." unique_id=951406411]
-wait_time = 20.0
+wait_time = 15.0
 autostart = true
 script = SubResource("GDScript_gubc5")
 
