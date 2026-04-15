@@ -308,7 +308,12 @@ region = Rect2(80, 256, 48, 32)
 size = Vector2(40, 16)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18nlu"]
-bg_color = Color(0.21960784, 0.21960784, 0.078431375, 0.69803923)
+bg_color = Color(0.80784315, 0.58431375, 0.36862746, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.32021227, 0.26353577, 0.06633739, 0.67058825)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6u1mn"]
 atlas = ExtResource("2_7ykc4")
@@ -368,6 +373,8 @@ position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_6u1mn")
 
 [node name="BadItemBackground" type="PanelContainer" parent="Badkuip" unique_id=165386878]
+unique_name_in_owner = true
+visible = false
 offset_left = -18.0
 offset_top = -5.0
 offset_right = 52.0
@@ -376,6 +383,7 @@ scale = Vector2(0.5, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_18nlu")
 
 [node name="BadItems" type="GridContainer" parent="Badkuip/BadItemBackground" unique_id=428656975]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

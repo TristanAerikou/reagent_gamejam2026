@@ -67,3 +67,6 @@ order_textures = Dictionary[int, AtlasTexture]({
 1: SubResource("AtlasTexture_r6p65"),
 2: SubResource("AtlasTexture_si52b")
 })
+speed_potion = Array[int]([0, 3])
+invis_potion = Array[int]([1, 2, 3])
+perfume = Array[int]([2, 3, 4, 4])

@@ -9,6 +9,10 @@ enum Order { ROOD, GEEL, ORANJE }
 @export var item_textures: Dictionary[Ingredient, AtlasTexture]
 @export var order_textures: Dictionary[Order, AtlasTexture]
 
+@export var speed_potion: Array[Ingredient]
+@export var invis_potion: Array[Ingredient]
+@export var perfume: Array[Ingredient]
+
 func get_potion_texture(ingredients) -> AtlasTexture:
 	var order_type := Order.ORANJE
 	if Ingredient.ZOUT in ingredients:
