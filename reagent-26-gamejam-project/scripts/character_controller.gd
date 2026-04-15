@@ -18,8 +18,7 @@ func _process(delta):
 	velocity = input_direction * speed * delta
 	change_sprite(input_direction)
 	
-	if Input.is_action_just_pressed("ui_select"):
-		interact()
+	interact()
 	
 	if not input_direction.is_zero_approx():
 		raycast.target_position = input_direction * 16
@@ -30,38 +29,39 @@ func _process(delta):
 func interact():
 	var target = raycast.get_collider()
 	if target == null:
+		$Control.visible = false
 		return
 	
-	if target.has_meta("is_glas_kast"):
+	if Input.is_action_just_pressed("ui_select") and target.has_meta("is_glas_kast"):
 		# kast met leeg glas
 		$HeldItem.texture = target.item_texture
 		is_carrying = []
 		
 	elif "item_type" in target:
 		# kast met ingredient
-		$HeldItem.texture = target.item_texture
-		is_carrying = target.item_type
 		$Control.visible = true
 		$Control/Label.text = "Press E to\nPick up object"
+		if Input.is_action_just_pressed("ui_select"):
+			$HeldItem.texture = target.item_texture
+			is_carrying = target.item_type
 		
 	elif target.has_method("add_ingredient"):
 		# badkuip
 		$Control.visible = true
 		$Control/Label.text = "Press E to\nDrop off object"
 		
-		if is_carrying is Array and len(is_carrying) == 0:
-			# leeg glas
-			is_carrying = target.clear_badkuip()
-			$HeldItem.texture = global_data.get_potion_texture(is_carrying)
-			
-		elif is_carrying != null:
-			target.add_ingredient(is_carrying)
-			is_carrying = null
-			$HeldItem.texture = null
-	else:
-		$Control.visible = false
+		if Input.is_action_just_pressed("ui_select"):
+			if is_carrying is Array and len(is_carrying) == 0:
+				# leeg glas
+				is_carrying = target.clear_badkuip()
+				$HeldItem.texture = global_data.get_potion_texture(is_carrying)
+				
+			elif is_carrying != null:
+				target.add_ingredient(is_carrying)
+				is_carrying = null
+				$HeldItem.texture = null
 	
-	elif target.has_method("submit_potion"):
+	elif Input.is_action_just_pressed("ui_select") and target.has_method("submit_potion"):
 		# wc
 		if is_carrying is Array[types.Ingredient]:
 			target.submit_potion(is_carrying)
@@ -69,6 +69,9 @@ func interact():
 		# gooi zowiezo item in uw hand weg, dus ingredienten en leeg glas kan je weggooien zonder indienen
 		is_carrying = null
 		$HeldItem.texture = null
+		
+	else:
+		$Control.visible = false
 
 func change_sprite(direction):
 	var walking_left = Vector2(-1.0, 0.0)
