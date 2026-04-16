@@ -18,9 +18,14 @@ border_color = Color(0, 0, 0, 1)
 atlas = ExtResource("1_vlord")
 region = Rect2(80, 16, 16, 16)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nramy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_somo4"]
+bg_color = Color(4.235506e-06, 0.61069727, 0.83897495, 1)
+
 [node name="Margin" type="MarginContainer" unique_id=250697484]
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_right = 100.0
+offset_bottom = 30.0
 script = ExtResource("1_nramy")
 
 [node name="Background" type="PanelContainer" parent="." unique_id=269630095]
@@ -34,11 +39,27 @@ layout_mode = 2
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vlord")
 
-[node name="OrderImage" type="TextureRect" parent="Background/HBox/PanelContainer" unique_id=1545688695]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/HBox/PanelContainer" unique_id=988838739]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="OrderImage" type="TextureRect" parent="Background/HBox/PanelContainer/HBoxContainer" unique_id=1545688695]
+unique_name_in_owner = true
 layout_mode = 2
 texture = SubResource("AtlasTexture_n4vyv")
 expand_mode = 2
 stretch_mode = 3
+
+[node name="CountDown" type="ProgressBar" parent="Background/HBox/PanelContainer/HBoxContainer" unique_id=705354778]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxEmpty_nramy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_somo4")
+max_value = 1.0
+fill_mode = 3
+show_percentage = false
 
 [node name="Ingredients" type="GridContainer" parent="Background/HBox" unique_id=1636148463]
 layout_mode = 2

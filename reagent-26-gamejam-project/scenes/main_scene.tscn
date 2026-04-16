@@ -309,6 +309,7 @@ func _ready() -> void:
 func _on_timeout() -> void:
 	var order := order_template.instantiate()
 	%Orders.add_child.call_deferred(order)
+	order.timeout.connect(%Player.die)
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c1pb6"]
@@ -542,6 +543,9 @@ region = Rect2(40, 51, 3, 3)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7nt27"]
 size = Vector2(26, 25)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wevv"]
+bg_color = Color(0, 0, 0, 0.7921569)
+
 [node name="Root" type="Node2D" unique_id=550315238]
 y_sort_enabled = true
 
@@ -566,6 +570,7 @@ scale = Vector2(0.75, 0.75)
 metadata/_edit_use_anchors_ = true
 
 [node name="NextOrderTimer" type="Timer" parent="Camera2D" unique_id=951406411]
+unique_name_in_owner = true
 wait_time = 15.0
 autostart = true
 script = SubResource("GDScript_gubc5")
@@ -587,6 +592,7 @@ size_flags_vertical = 8
 text = "Score: 0"
 
 [node name="Player" parent="." unique_id=1772965135 instance=ExtResource("3_7ykc4")]
+unique_name_in_owner = true
 position = Vector2(0, -8)
 
 [node name="KastHitboxes" type="StaticBody2D" parent="." unique_id=1339769547]
@@ -822,15 +828,32 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_6wevv")
 
 [node name="MarginContainer" type="MarginContainer" parent="GameOver/PanelContainer" unique_id=1667785]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="GameOver/PanelContainer/MarginContainer" unique_id=672888860]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/PanelContainer/MarginContainer" unique_id=1048694368]
 layout_mode = 2
+alignment = 1
+
+[node name="YouDied" type="Label" parent="GameOver/PanelContainer/MarginContainer/VBoxContainer" unique_id=672888860]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.2627451, 0.2784314, 1)
+theme_override_font_sizes/font_size = 32
 text = "YOU DIED"
+horizontal_alignment = 1
+
+[node name="Reason" type="Label" parent="GameOver/PanelContainer/MarginContainer/VBoxContainer" unique_id=780550171]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="GameOver/PanelContainer/MarginContainer/VBoxContainer" unique_id=2086365168]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 
 [connection signal="timeout" from="Camera2D/NextOrderTimer" to="Camera2D/NextOrderTimer" method="_on_timeout"]
 [connection signal="body_entered" from="Badkuip" to="Badkuip" method="_on_body_entered"]

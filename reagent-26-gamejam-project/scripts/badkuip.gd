@@ -55,6 +55,8 @@ func add_ingredient(ingredient: enums.Ingredient):
 func clear_badkuip() -> Array[enums.Ingredient]:
 	var copy := ingredients.duplicate()
 	ingredients.clear()
+	$Fire.emitting = false
+	extinguished.emit()
 	for child in %BadItems.get_children():
 		child.queue_free()
 	($BadkuipSprite.texture as AtlasTexture).region.position = Vector2(0, 72)

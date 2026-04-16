@@ -1,9 +1,14 @@
 extends MarginContainer
 
+signal timeout
+
 const types = preload("res://scripts/global_data.gd")
 const global_data = preload("res://scripts/global_data.tres")
 
 var ingredients: Array[types.Ingredient] = []
+
+var total_time: float = 80
+var time_left: float = 80
 
 func _ready():
 	for ingredient_count in randi_range(1, 4):
@@ -15,4 +20,11 @@ func _ready():
 		
 		ingredients.push_back(ingredient_type)
 
-	$Background/HBox/PanelContainer/OrderImage.texture = global_data.get_potion_texture(ingredients)
+	%OrderImage.texture = global_data.get_potion_texture(ingredients)
+
+func _process(delta: float) -> void:
+	time_left -= delta
+	%CountDown.value = time_left / total_time
+	if time_left <= 0:
+		timeout.emit("Took too long to fulfill order!")
+		queue_free()

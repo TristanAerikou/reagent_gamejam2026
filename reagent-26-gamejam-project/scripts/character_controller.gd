@@ -78,11 +78,20 @@ func drink():
 		if is_carrying.count(type) != global_data.invis_potion.count(type): matching_invis = false
 		if is_carrying.count(type) != global_data.fire_potion.count(type): matching_fire = false
 	
+	$HeldItem.texture = null
+	
+	if matching_speed and has_speed:
+		die("There is such a thing as too fast.")
+	elif matching_invis and has_invis:
+		die("You became so invisible, the universe forgot about you.")
+	elif matching_fire and has_fire:
+		die("Did you know the body is made out of 85% water?\nWell, yours reached 100%.")
+	
 	if matching_speed and !has_speed:
 		speed *= 2
 		has_speed = true
 		var timer := Timer.new()
-		timer.wait_time = 60
+		timer.wait_time = 30
 		timer.timeout.connect(func ():
 			speed /= 2
 			has_speed = false
@@ -109,21 +118,19 @@ func drink():
 		$AnimatedSprite2D.modulate.g *= 0.2
 		has_fire = true
 		var timer := Timer.new()
-		timer.wait_time = 10
+		timer.wait_time = 15
 		timer.timeout.connect(func ():
 			$AnimatedSprite2D.modulate.r *= 5
 			$AnimatedSprite2D.modulate.g *= 5
 			has_fire = false
 			timer.queue_free()
 			if badkuip_on_fire:
-				%GameOver.visible = true
-				allowed_to_move = false
+				die("Your SunScreen-9000(TM) ran out.")
 		)
 		add_child(timer)
 		timer.start()
 	
 	is_carrying = null
-	$HeldItem.texture = null
 
 func change_sprite(direction):
 	var walking_left = Vector2(-1.0, 0.0)
@@ -155,9 +162,20 @@ func change_sprite(direction):
 func _on_badkuip_on_fire() -> void:
 	badkuip_on_fire = true
 	if !has_fire:
-		%GameOver.visible = true
-		allowed_to_move = false
-
+		die("Your bathtub exploded.\nConsider wearing SunScreen9000(TM) next time.\n(Or nor starting chemical fires.)")
 
 func _on_badkuip_extinguished() -> void:
 	badkuip_on_fire = false
+
+func die(reason: String):
+	if !allowed_to_move: return # so it doesnt break for the unfulfilled orders
+	%NextOrderTimer.stop()
+	
+	%Reason.text = reason
+	var score := %ScoreLabel
+	score.get_parent().remove_child(score)
+	%Reason.get_parent().add_child(score)
+	%GameOver.visible = true
+	
+	allowed_to_move = false
+	$AnimatedSprite2D.stop()
