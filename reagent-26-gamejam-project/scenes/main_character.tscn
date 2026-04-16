@@ -307,7 +307,6 @@ y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_4p683")
 animation = &"player_idle_down"
 autoplay = "player_idle_down"
-frame_progress = 0.621669
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1946150490]
 position = Vector2(0, 1)

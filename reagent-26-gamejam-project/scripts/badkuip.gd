@@ -7,9 +7,6 @@ signal extinguished
 const enums = preload("res://scripts/global_data.gd")
 const global_data = preload("res://scripts/global_data.tres")
 
-@export var leeg_texture: AtlasTexture
-@export var vol_texture: AtlasTexture
-
 var ingredients: Array[enums.Ingredient] = []
 
 func _on_body_entered(body: Node2D):

@@ -18,3 +18,4 @@ func submit_potion(potion: Array[enums.Ingredient]):
 			order.queue_free()
 			score += 10
 			%ScoreLabel.text = "Score: " + str(score)
+			break

@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dwy5ummr2wo30" path="res://scripts/wc.gd" id="8_18nlu"]
 [ext_resource type="Texture2D" uid="uid://cv0ngjlycykpf" path="res://assets/explosion-b.png" id="9_6wevv"]
 [ext_resource type="PackedScene" uid="uid://d0fths4g2hato" path="res://scenes/item_pickup.tscn" id="10_6wevv"]
+[ext_resource type="Script" uid="uid://kexvc5fcpu3j" path="res://scripts/hazards.gd" id="11_e1cbu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pu3yx"]
 texture = ExtResource("1_pw63i")
@@ -421,14 +422,6 @@ region = Rect2(0, 96, 16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r6p65"]
 size = Vector2(32, 28)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bcnxi"]
-atlas = ExtResource("6_c16ls")
-region = Rect2(80, 256, 48, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_58gk3"]
-atlas = ExtResource("4_c1pb6")
-region = Rect2(80, 256, 48, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_01n6w"]
 atlas = ExtResource("8_6wevv")
 region = Rect2(0, 72, 48, 24)
@@ -545,6 +538,43 @@ size = Vector2(26, 25)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wevv"]
 bg_color = Color(0, 0, 0, 0.7921569)
+
+[sub_resource type="Animation" id="Animation_e1cbu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HazardTimer/FallingItem:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-80, -111)]
+}
+
+[sub_resource type="Animation" id="Animation_mngbo"]
+resource_name = "falling_item"
+length = 3.0666666
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HazardTimer/FallingItem:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.0666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-80, -111), Vector2(-80, 49)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4w45t"]
+_data = {
+&"RESET": SubResource("Animation_e1cbu"),
+&"falling_item": SubResource("Animation_mngbo")
+}
 
 [node name="Root" type="Node2D" unique_id=550315238]
 y_sort_enabled = true
@@ -751,13 +781,12 @@ position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_r6p65")
 
 [node name="Badkuip" type="Area2D" parent="." unique_id=724574539]
+unique_name_in_owner = true
 z_index = 1
 position = Vector2(-80, 52)
 collision_layer = 4
 collision_mask = 6
 script = ExtResource("6_rt2n2")
-leeg_texture = SubResource("AtlasTexture_bcnxi")
-vol_texture = SubResource("AtlasTexture_58gk3")
 
 [node name="BadkuipSprite" type="Sprite2D" parent="Badkuip" unique_id=1979908912]
 y_sort_enabled = true
@@ -787,7 +816,6 @@ columns = 4
 
 [node name="Explosion" type="AnimatedSprite2D" parent="Badkuip" unique_id=1355786284]
 position = Vector2(0, -8)
-scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_l40q6")
 animation = &"explode"
 
@@ -855,6 +883,20 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
+[node name="HazardTimer" type="Timer" parent="." unique_id=182171178]
+wait_time = 3.0
+one_shot = true
+autostart = true
+script = ExtResource("11_e1cbu")
+
+[node name="FallingItem" type="Sprite2D" parent="HazardTimer" unique_id=2071675874]
+z_index = 4
+position = Vector2(-80, -111)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1095805411]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_4w45t")
+
 [connection signal="timeout" from="Camera2D/NextOrderTimer" to="Camera2D/NextOrderTimer" method="_on_timeout"]
 [connection signal="body_entered" from="Badkuip" to="Badkuip" method="_on_body_entered"]
 [connection signal="body_exited" from="Badkuip" to="Badkuip" method="_on_body_exited"]
@@ -862,3 +904,5 @@ layout_mode = 2
 [connection signal="on_fire" from="Badkuip" to="Player" method="_on_badkuip_on_fire"]
 [connection signal="body_entered" from="WC" to="WC" method="_on_body_entered"]
 [connection signal="body_exited" from="WC" to="WC" method="_on_body_exited"]
+[connection signal="timeout" from="HazardTimer" to="HazardTimer" method="_on_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="HazardTimer" method="_on_animation_player_animation_finished"]

@@ -179,3 +179,12 @@ func die(reason: String):
 	
 	allowed_to_move = false
 	$AnimatedSprite2D.stop()
+	
+	var timer := Timer.new()
+	timer.wait_time = 10
+	timer.autostart = true
+	timer.timeout.connect(func ():
+		get_tree().reload_current_scene()
+		($"../Badkuip/BadkuipSprite".texture as AtlasTexture).region.position = Vector2(0, 72)
+	)
+	add_child(timer)
