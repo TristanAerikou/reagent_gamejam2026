@@ -68,11 +68,11 @@ func drink():
 	
 	var matching_speed := true
 	var matching_invis := true
-	var matching_perfume := true
+	var matching_fire := true
 	for type in global_data.Ingredient.values():
 		if is_carrying.count(type) != global_data.speed_potion.count(type): matching_speed = false
 		if is_carrying.count(type) != global_data.invis_potion.count(type): matching_invis = false
-		if is_carrying.count(type) != global_data.perfume.count(type): matching_perfume = false
+		if is_carrying.count(type) != global_data.fire_potion.count(type): matching_fire = false
 	
 	if matching_speed and !has_speed:
 		speed *= 2

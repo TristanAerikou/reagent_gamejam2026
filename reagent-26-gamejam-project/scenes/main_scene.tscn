@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://ck5fjhpbpf7tx" path="res://assets/TopDownHouse_FurnitureState2.png" id="4_c1pb6"]
 [ext_resource type="Texture2D" uid="uid://qjgahqsiscw5" path="res://assets/TopDownHouse_FurnitureState1.png" id="6_c16ls"]
 [ext_resource type="Script" uid="uid://b464545lq0bsq" path="res://scripts/badkuip.gd" id="6_rt2n2"]
+[ext_resource type="Texture2D" uid="uid://dbbop820juvaj" path="res://assets/Badkuipen.png" id="8_6wevv"]
 [ext_resource type="Script" uid="uid://dwy5ummr2wo30" path="res://scripts/wc.gd" id="8_18nlu"]
+[ext_resource type="Texture2D" uid="uid://cv0ngjlycykpf" path="res://assets/explosion-b.png" id="9_6wevv"]
 [ext_resource type="PackedScene" uid="uid://d0fths4g2hato" path="res://scenes/item_pickup.tscn" id="10_6wevv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pu3yx"]
@@ -334,7 +336,7 @@ size = Vector2(16, 18)
 size = Vector2(40, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k6f3i"]
-size = Vector2(21, 18)
+size = Vector2(21, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6wevv"]
 atlas = ExtResource("4_c1pb6")
@@ -363,6 +365,18 @@ region = Rect2(48, 0, 16, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7nt27"]
 atlas = ExtResource("6_c16ls")
 region = Rect2(144, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_to7gp"]
+atlas = ExtResource("2_7ykc4")
+region = Rect2(48, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0fll"]
+atlas = ExtResource("2_7ykc4")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6p3nn"]
+atlas = ExtResource("2_7ykc4")
+region = Rect2(48, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c1pb6"]
 atlas = ExtResource("2_7ykc4")
@@ -415,8 +429,8 @@ atlas = ExtResource("4_c1pb6")
 region = Rect2(80, 256, 48, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_01n6w"]
-atlas = ExtResource("6_c16ls")
-region = Rect2(80, 256, 48, 32)
+atlas = ExtResource("8_6wevv")
+region = Rect2(0, 72, 48, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bcnxi"]
 size = Vector2(48, 26)
@@ -428,6 +442,102 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.32021227, 0.26353577, 0.06633739, 0.67058825)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k67gn"]
+atlas = ExtResource("9_6wevv")
+region = Rect2(0, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02d50"]
+atlas = ExtResource("9_6wevv")
+region = Rect2(240, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgk25"]
+atlas = ExtResource("9_6wevv")
+region = Rect2(320, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkokr"]
+atlas = ExtResource("9_6wevv")
+region = Rect2(400, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhwp2"]
+atlas = ExtResource("9_6wevv")
+region = Rect2(480, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l40q6"]
+atlas = ExtResource("9_6wevv")
+region = Rect2(560, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_womr8"]
+atlas = ExtResource("9_6wevv")
+region = Rect2(640, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onjth"]
+atlas = ExtResource("9_6wevv")
+region = Rect2(720, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa0eo"]
+atlas = ExtResource("9_6wevv")
+region = Rect2(800, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mjum"]
+atlas = ExtResource("9_6wevv")
+region = Rect2(880, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p27gv"]
+atlas = ExtResource("9_6wevv")
+region = Rect2(960, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cn4eu"]
+atlas = ExtResource("9_6wevv")
+region = Rect2(0, 0, 80, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l40q6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k67gn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02d50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgk25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkokr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhwp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l40q6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_womr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onjth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xa0eo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mjum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p27gv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cn4eu")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 15.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iav3h"]
+atlas = ExtResource("2_7ykc4")
+region = Rect2(40, 51, 3, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7nt27"]
 size = Vector2(26, 25)
@@ -445,11 +555,6 @@ layer_0/tile_data = PackedInt32Array(-196615, 131072, 5, -196614, 196608, 5, -13
 position = Vector2(0, -13)
 zoom = Vector2(4, 4)
 
-[node name="NextOrderTimer" type="Timer" parent="Camera2D" unique_id=951406411]
-wait_time = 15.0
-autostart = true
-script = SubResource("GDScript_gubc5")
-
 [node name="Orders" type="HBoxContainer" parent="Camera2D" unique_id=1139665171]
 unique_name_in_owner = true
 z_index = 2
@@ -459,6 +564,11 @@ offset_right = -104.0
 offset_bottom = -51.0
 scale = Vector2(0.75, 0.75)
 metadata/_edit_use_anchors_ = true
+
+[node name="NextOrderTimer" type="Timer" parent="Camera2D" unique_id=951406411]
+wait_time = 15.0
+autostart = true
+script = SubResource("GDScript_gubc5")
 
 [node name="Score" type="PanelContainer" parent="Camera2D" unique_id=1767068375]
 offset_left = -144.0
@@ -480,7 +590,6 @@ text = "Score: 0"
 position = Vector2(0, -8)
 
 [node name="KastHitboxes" type="StaticBody2D" parent="." unique_id=1339769547]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KastHitboxes" unique_id=525066093]
 position = Vector2(63, -45)
@@ -511,42 +620,67 @@ position = Vector2(-80, 53)
 shape = SubResource("RectangleShape2D_6u1mn")
 
 [node name="WC" type="CollisionShape2D" parent="KastHitboxes" unique_id=1584850975]
-position = Vector2(-116.5, 7)
+position = Vector2(-116.5, 5.5)
 shape = SubResource("RectangleShape2D_k6f3i")
 
-[node name="HoekTop" type="Sprite2D" parent="." unique_id=39202421]
-y_sort_enabled = true
+[node name="Textures" type="Node2D" parent="." unique_id=973964589]
+
+[node name="HoekTop" type="Sprite2D" parent="Textures" unique_id=39202421]
+z_index = -1
 position = Vector2(56, -40)
 texture = SubResource("AtlasTexture_6wevv")
 
-[node name="HoekRechts" type="Sprite2D" parent="." unique_id=2080782382]
-y_sort_enabled = true
+[node name="HoekRechts" type="Sprite2D" parent="Textures" unique_id=2080782382]
+z_index = -1
 position = Vector2(112, -32)
 texture = SubResource("AtlasTexture_e1cbu")
 
-[node name="Hoog1" type="Sprite2D" parent="." unique_id=1006557433]
-y_sort_enabled = true
+[node name="Hoog1" type="Sprite2D" parent="Textures" unique_id=1006557433]
+z_index = 1
 position = Vector2(112, 48)
 texture = SubResource("AtlasTexture_mngbo")
 
-[node name="Laag1" type="Sprite2D" parent="." unique_id=2079504995]
-y_sort_enabled = true
+[node name="Laag1" type="Sprite2D" parent="Textures" unique_id=2079504995]
+z_index = 1
 position = Vector2(56, 48)
 texture = SubResource("AtlasTexture_4w45t")
 
-[node name="Laag2" type="Sprite2D" parent="." unique_id=376556027]
-y_sort_enabled = true
+[node name="Laag2" type="Sprite2D" parent="Textures" unique_id=376556027]
+z_index = 1
 position = Vector2(32, 48)
 texture = SubResource("AtlasTexture_r6p65")
 
-[node name="GlasKast" type="Sprite2D" parent="." unique_id=1626134033]
-y_sort_enabled = true
+[node name="GlasKast" type="Sprite2D" parent="Textures" unique_id=1626134033]
+z_index = -1
 position = Vector2(-20, -52)
 texture = SubResource("AtlasTexture_6u1mn")
 
-[node name="WCSprite" type="Sprite2D" parent="." unique_id=1060503331]
+[node name="WCSprite" type="Sprite2D" parent="Textures" unique_id=1060503331]
+y_sort_enabled = true
 position = Vector2(-112, 0)
 texture = SubResource("AtlasTexture_7nt27")
+
+[node name="Batterij1" type="Sprite2D" parent="Textures" unique_id=811712107]
+z_index = 1
+position = Vector2(27.999998, 42)
+scale = Vector2(0.8, 0.8)
+texture = SubResource("AtlasTexture_to7gp")
+
+[node name="Batterij2" type="Sprite2D" parent="Textures" unique_id=614113031]
+z_index = 1
+position = Vector2(35, 39)
+scale = Vector2(0.8, 0.8)
+texture = SubResource("AtlasTexture_to7gp")
+
+[node name="Glas" type="Sprite2D" parent="Textures" unique_id=233348022]
+position = Vector2(49, -53)
+scale = Vector2(0.75, 0.75)
+texture = SubResource("AtlasTexture_u0fll")
+
+[node name="Goudvis" type="Sprite2D" parent="Textures" unique_id=1670058919]
+z_index = 1
+position = Vector2(112, 32)
+texture = SubResource("AtlasTexture_6p3nn")
 
 [node name="Pickups" type="Node" parent="." unique_id=1935160433]
 
@@ -556,6 +690,7 @@ item = 4
 texture = SubResource("AtlasTexture_c1pb6")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Pickups/Water" unique_id=1436759581]
+visible = false
 z_index = 1
 shape = SubResource("RectangleShape2D_mngbo")
 
@@ -565,6 +700,7 @@ item = 3
 texture = SubResource("AtlasTexture_si52b")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Pickups/Batterij" unique_id=1988525954]
+visible = false
 z_index = 1
 position = Vector2(-2, -4)
 shape = SubResource("RectangleShape2D_4w45t")
@@ -575,6 +711,7 @@ item = 1
 texture = SubResource("AtlasTexture_k6f3i")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Pickups/Bot" unique_id=1603574357]
+visible = false
 position = Vector2(2, -4)
 shape = SubResource("RectangleShape2D_xdqt8")
 
@@ -584,6 +721,7 @@ item = 2
 texture = SubResource("AtlasTexture_xdqt8")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Pickups/Goudvis" unique_id=1325446474]
+visible = false
 shape = SubResource("RectangleShape2D_58gk3")
 
 [node name="Zout" parent="Pickups" unique_id=1422806008 instance=ExtResource("10_6wevv")]
@@ -591,6 +729,7 @@ position = Vector2(112, -20)
 texture = SubResource("AtlasTexture_adb74")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Pickups/Zout" unique_id=782347099]
+visible = false
 position = Vector2(2, 8)
 shape = SubResource("RectangleShape2D_u0fll")
 
@@ -600,6 +739,7 @@ texture = SubResource("AtlasTexture_18nlu")
 metadata/glas = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickups/Glas" unique_id=1814510961]
+visible = false
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_r6p65")
 
@@ -614,10 +754,10 @@ vol_texture = SubResource("AtlasTexture_58gk3")
 
 [node name="BadkuipSprite" type="Sprite2D" parent="Badkuip" unique_id=1979908912]
 y_sort_enabled = true
-position = Vector2(0, -4)
 texture = SubResource("AtlasTexture_01n6w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Badkuip" unique_id=180214247]
+visible = false
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_bcnxi")
 
@@ -638,14 +778,34 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 columns = 4
 
+[node name="Explosion" type="AnimatedSprite2D" parent="Badkuip" unique_id=1355786284]
+position = Vector2(0, -8)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_l40q6")
+animation = &"explode"
+
+[node name="Fire" type="CPUParticles2D" parent="Badkuip" unique_id=1442348524]
+position = Vector2(0, -3)
+emitting = false
+amount = 10
+texture = SubResource("AtlasTexture_iav3h")
+emission_shape = 3
+emission_rect_extents = Vector2(20, 1)
+direction = Vector2(0, -1)
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 4.0
+initial_velocity_max = 15.0
+
 [node name="WC" type="Area2D" parent="." unique_id=182436889]
-z_index = 1
+y_sort_enabled = true
 position = Vector2(-116, 4)
 collision_layer = 4
 collision_mask = 6
 script = ExtResource("8_18nlu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WC" unique_id=1180045586]
+visible = false
 position = Vector2(3, 0.5)
 shape = SubResource("RectangleShape2D_7nt27")
 

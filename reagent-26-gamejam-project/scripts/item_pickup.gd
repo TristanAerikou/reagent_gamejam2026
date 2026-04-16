@@ -9,6 +9,7 @@ const enums = preload("res://scripts/global_data.gd")
 
 func _ready():
 	$PanelContainer/VBoxContainer/TextureRect.texture = texture
+	$PanelContainer/VBoxContainer/Label.text = "Pick up: \n" + enums.Ingredient.keys()[item]
 	if not Engine.is_editor_hint():
 		$PanelContainer.visible = false
 
