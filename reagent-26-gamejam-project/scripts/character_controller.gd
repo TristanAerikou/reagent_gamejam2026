@@ -8,7 +8,10 @@ const global_data = preload("res://scripts/global_data.tres")
 
 var has_speed := false
 var has_invis := false
-var has_perfume := false
+var has_fire := false
+
+var badkuip_on_fire := false
+var allowed_to_move := true
 
 # bevat exact wat je vast hebt en heeft dus geen type
 # null -> lege handen
@@ -19,9 +22,10 @@ var is_carrying
 
 func _process(delta):
 	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	if !allowed_to_move:
+		input_direction = Vector2(0, 0)
 	velocity = input_direction * speed * delta
 	change_sprite(input_direction)
-	
 	
 	if Input.is_action_just_pressed("drink"):
 		drink()
@@ -78,7 +82,7 @@ func drink():
 		speed *= 2
 		has_speed = true
 		var timer := Timer.new()
-		timer.wait_time = 10
+		timer.wait_time = 60
 		timer.timeout.connect(func ():
 			speed /= 2
 			has_speed = false
@@ -87,15 +91,33 @@ func drink():
 		add_child(timer)
 		timer.start()
 	
-	elif matching_invis:
-		$AnimatedSprite2D.modulate = Color(1, 1, 1, 0.2)
+	elif matching_invis and !has_invis:
+		$AnimatedSprite2D.modulate.a *= 0.2
 		has_invis = true
+		var timer := Timer.new()
+		timer.wait_time = 30
+		timer.timeout.connect(func ():
+			$AnimatedSprite2D.modulate.a *= 5
+			has_invis = false
+			timer.queue_free()
+		)
+		add_child(timer)
+		timer.start()
+	
+	elif matching_fire and !has_fire:
+		$AnimatedSprite2D.modulate.r *= 0.2
+		$AnimatedSprite2D.modulate.g *= 0.2
+		has_fire = true
 		var timer := Timer.new()
 		timer.wait_time = 10
 		timer.timeout.connect(func ():
-			$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
-			has_invis = false
+			$AnimatedSprite2D.modulate.r *= 5
+			$AnimatedSprite2D.modulate.g *= 5
+			has_fire = false
 			timer.queue_free()
+			if badkuip_on_fire:
+				%GameOver.visible = true
+				allowed_to_move = false
 		)
 		add_child(timer)
 		timer.start()
@@ -128,3 +150,14 @@ func change_sprite(direction):
 			$AnimatedSprite2D.animation = "player_walking_up"
 		walking_down:
 			$AnimatedSprite2D.animation = "player_walking_down"
+
+
+func _on_badkuip_on_fire() -> void:
+	badkuip_on_fire = true
+	if !has_fire:
+		%GameOver.visible = true
+		allowed_to_move = false
+
+
+func _on_badkuip_extinguished() -> void:
+	badkuip_on_fire = false

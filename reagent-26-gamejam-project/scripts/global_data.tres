@@ -69,4 +69,4 @@ order_textures = Dictionary[int, AtlasTexture]({
 })
 speed_potion = Array[int]([0, 3])
 invis_potion = Array[int]([1, 2, 3])
-fire_potion = Array[int]([4, 2, 4])
+fire_potion = Array[int]([4, 4, 2])
