@@ -1,19 +1,26 @@
-extends StaticBody2D
+extends Area2D
+class_name Badkuip
 
-const types = preload("res://scripts/global_data.gd")
+const enums = preload("res://scripts/global_data.gd")
 const global_data = preload("res://scripts/global_data.tres")
 
-var ingredients: Array[types.Ingredient] = []
+var ingredients: Array[enums.Ingredient] = []
 
-func add_ingredient(ingredient: types.Ingredient):
+func _on_body_entered(body: Node2D):
+	%BadItemBackground.visible = true
+	
+func _on_body_exited(body: Node2D):
+	%BadItemBackground.visible = false
+
+func add_ingredient(ingredient: enums.Ingredient):
 	ingredients.push_back(ingredient)
 	var tex := TextureRect.new()
 	tex.texture = global_data.item_textures[ingredient]
-	$BadItemBackground/BadItems.add_child(tex)
+	%BadItems.add_child(tex)
 
-func clear_badkuip() -> Array[types.Ingredient]:
+func clear_badkuip() -> Array[enums.Ingredient]:
 	var copy := ingredients.duplicate()
 	ingredients.clear()
-	for child in $BadItemBackground/BadItems.get_children():
+	for child in %BadItems.get_children():
 		child.queue_free()
 	return copy

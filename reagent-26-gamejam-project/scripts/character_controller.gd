@@ -1,6 +1,6 @@
 extends CharacterBody2D
+class_name MainCharacter
 
-const types = preload("res://scripts/global_data.gd")
 const global_data = preload("res://scripts/global_data.tres")
 
 @export var speed: int
@@ -22,7 +22,6 @@ func _process(delta):
 	velocity = input_direction * speed * delta
 	change_sprite(input_direction)
 	
-	interact()
 	
 	if Input.is_action_just_pressed("drink"):
 		drink()
@@ -31,70 +30,46 @@ func _process(delta):
 		raycast.target_position = input_direction * 16
 		$HeldItem.position = input_direction * 8
 	
+	if Input.is_action_just_pressed("ui_select"):
+		interact()
+	
 	move_and_slide()
 
 func interact():
-	var target = raycast.get_collider()
-	if target == null:
-		$Control.visible = false
-		$"../../Badkuip/BadItemBackground".visible = false
-		return
+	var target = $RayCast2D.get_collider()
+	if target == null: return
 	
-	if Input.is_action_just_pressed("ui_select") and target.has_meta("is_glas_kast"):
-		# kast met leeg glas
-		$HeldItem.texture = target.item_texture
-		is_carrying = []
-		
-	elif "item_type" in target:
-		# kast met ingredient
-		$Control.visible = true
-		$Control/Label.text = "Press E to\npick up object"
-		if Input.is_action_just_pressed("ui_select"):
-			$HeldItem.texture = target.item_texture
-			is_carrying = target.item_type
-		
-	elif target.has_method("add_ingredient"):
-		# badkuip
-		$Control.visible = true
-		$Control/Label.text = "Press E to\ndrop off object"
-		$"../../Badkuip/BadItemBackground".visible = true
-		
-		if Input.is_action_just_pressed("ui_select"):
-			if is_carrying is Array and len(is_carrying) == 0:
-				# leeg glas
-				is_carrying = target.clear_badkuip()
-				$HeldItem.texture = global_data.get_potion_texture(is_carrying)
-				
-			elif is_carrying != null:
-				target.add_ingredient(is_carrying)
-				is_carrying = null
-				$HeldItem.texture = null
-	
-	elif target.has_method("submit_potion"):
-		# wc
-		$Control.visible = true
-		$Control/Label.text = "Press E to \nsubmit this potion"
-		if Input.is_action_just_pressed("ui_select"):
-			if is_carrying is Array[types.Ingredient]:
-				target.submit_potion(is_carrying)
+	if target is ItemPickup:
+		$HeldItem.texture = target.get_texture()
+		if target.has_meta("glas"):
+			is_carrying = []
+		else:
+			is_carrying = target.item
 			
-			# gooi zowiezo item in uw hand weg, dus ingredienten en leeg glas kan je weggooien zonder indienen
+	elif target is Badkuip:
+		if is_carrying is Array and len(is_carrying) == 0:
+			is_carrying = target.clear_badkuip()
+			$HeldItem.texture = global_data.get_potion_texture(is_carrying)
+		else:
+			target.add_ingredient(is_carrying)
 			is_carrying = null
 			$HeldItem.texture = null
-		
-	else:
-		$Control.visible = false
+	
+	elif target is WC:
+		if is_carrying is Array:
+			target.submit_potion(is_carrying)
+		is_carrying = null
+		$HeldItem.texture = null
+
 
 func drink():
 	if !(is_carrying is Array):
-		print("tried to drink")
 		return
-	print("drinking")
 	
 	var matching_speed := true
 	var matching_invis := true
 	var matching_perfume := true
-	for type in types.Ingredient.values():
+	for type in global_data.Ingredient.values():
 		if is_carrying.count(type) != global_data.speed_potion.count(type): matching_speed = false
 		if is_carrying.count(type) != global_data.invis_potion.count(type): matching_invis = false
 		if is_carrying.count(type) != global_data.perfume.count(type): matching_perfume = false
@@ -124,6 +99,9 @@ func drink():
 		)
 		add_child(timer)
 		timer.start()
+	
+	is_carrying = null
+	$HeldItem.texture = null
 
 func change_sprite(direction):
 	var walking_left = Vector2(-1.0, 0.0)

@@ -2,12 +2,9 @@ extends Node2D
 class_name mainScript
 
 const kast_template = preload("res://scenes/kast.tscn")
-const order_template = preload("res://scenes/order.tscn")
 const global_data = preload("res://scripts/global_data.tres")
 
 func _ready() -> void:
-	#voeg 1 starting order toe
-	_next_order_timeout()
 	
 	var rand_ingredient := global_data.Ingredient.values().duplicate()
 	rand_ingredient.shuffle()
@@ -21,8 +18,3 @@ func _ready() -> void:
 		kasten[pos].item_type = rand_ingredient[pos % len(global_data.Ingredient)]
 		kasten[pos].item_texture = global_data.item_textures[rand_ingredient[pos % len(global_data.Ingredient)]]
 		kasten[pos].update_vars()
-
-func _next_order_timeout() -> void:
-	var order := order_template.instantiate()
-	$Camera2D/Orders.add_child(order)
-	

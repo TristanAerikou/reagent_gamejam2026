@@ -1,13 +1,15 @@
-extends Node
+extends Area2D
+class_name WC
 
-const types = preload("res://scripts/global_data.gd")
-@onready var orders: HBoxContainer = $"../Camera2D/Orders"
+const enums = preload("res://scripts/global_data.gd")
+
 var score: int = 0
 
-func submit_potion(potion: Array[types.Ingredient]):
-	for order in orders.get_children():
+func submit_potion(potion: Array[enums.Ingredient]):
+	print("submitted ", potion)
+	for order in %Orders.get_children():
 		var matching := true
-		for item in types.Ingredient.values():
+		for item in enums.Ingredient.values():
 			if potion.count(item) != order.ingredients.count(item):
 				matching = false
 				break
@@ -15,4 +17,4 @@ func submit_potion(potion: Array[types.Ingredient]):
 		if matching:
 			order.queue_free()
 			score += 10
-			$"../ScoreLabel".text = "Score: " + str(score)
+			%ScoreLabel.text = "Score: " + str(score)

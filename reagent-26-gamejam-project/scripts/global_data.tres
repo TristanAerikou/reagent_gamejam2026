@@ -18,11 +18,11 @@ region = Rect2(48, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e1cbu"]
 atlas = ExtResource("1_ntdsv")
-region = Rect2(16, 32, 16, 16)
+region = Rect2(48, 112, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mngbo"]
 atlas = ExtResource("1_ntdsv")
-region = Rect2(80, 32, 16, 16)
+region = Rect2(0, 80, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gubc5"]
 atlas = ExtResource("2_guass")

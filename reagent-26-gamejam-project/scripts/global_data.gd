@@ -1,7 +1,7 @@
 extends Resource
 class_name TextureMap
 
-enum Ingredient { ZOUT, BOT, GOUDVIS, KOEKJE, KAAS }
+enum Ingredient { ZOUT, BOT, GOUDVIS, BATTERIJ, WATER }
 enum Opberg { KAST, TAFEL, KLEINKASTJE }
 enum Order { ROOD, GEEL, ORANJE }
 
@@ -19,7 +19,7 @@ func get_potion_texture(ingredients) -> AtlasTexture:
 		order_type = Order.GEEL
 	elif Ingredient.BOT in ingredients:
 		order_type = Order.ROOD
-	elif Ingredient.KAAS in ingredients:
+	elif Ingredient.WATER in ingredients:
 		order_type = Order.GEEL
 	
 	return order_textures[order_type]
