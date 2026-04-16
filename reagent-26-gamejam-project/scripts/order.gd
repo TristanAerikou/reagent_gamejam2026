@@ -26,5 +26,5 @@ func _process(delta: float) -> void:
 	time_left -= delta
 	%CountDown.value = time_left / total_time
 	if time_left <= 0:
-		timeout.emit("Took too long to fulfill order!")
+		timeout.emit("One star review!")
 		queue_free()

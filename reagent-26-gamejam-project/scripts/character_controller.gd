@@ -10,6 +10,7 @@ var has_speed := false
 var has_invis := false
 var has_fire := false
 
+var cop_looking := false
 var badkuip_on_fire := false
 var allowed_to_move := true
 
@@ -90,45 +91,32 @@ func drink():
 	if matching_speed and !has_speed:
 		speed *= 2
 		has_speed = true
-		var timer := Timer.new()
-		timer.wait_time = 30
-		timer.timeout.connect(func ():
+		get_tree().create_timer(4).timeout.connect(func ():
 			speed /= 2
 			has_speed = false
-			timer.queue_free()
 		)
-		add_child(timer)
-		timer.start()
 	
 	elif matching_invis and !has_invis:
 		$AnimatedSprite2D.modulate.a *= 0.2
 		has_invis = true
-		var timer := Timer.new()
-		timer.wait_time = 30
-		timer.timeout.connect(func ():
+		get_tree().create_timer(4).timeout.connect(func ():
 			$AnimatedSprite2D.modulate.a *= 5
 			has_invis = false
-			timer.queue_free()
+			if cop_looking:
+				die("Well, that was awkward.")
 		)
-		add_child(timer)
-		timer.start()
 	
 	elif matching_fire and !has_fire:
 		$AnimatedSprite2D.modulate.r *= 0.2
 		$AnimatedSprite2D.modulate.g *= 0.2
 		has_fire = true
-		var timer := Timer.new()
-		timer.wait_time = 15
-		timer.timeout.connect(func ():
+		get_tree().create_timer(4).timeout.connect(func ():
 			$AnimatedSprite2D.modulate.r *= 5
 			$AnimatedSprite2D.modulate.g *= 5
 			has_fire = false
-			timer.queue_free()
 			if badkuip_on_fire:
 				die("Your SunScreen-9000(TM) ran out.")
 		)
-		add_child(timer)
-		timer.start()
 	
 	is_carrying = null
 
@@ -162,10 +150,18 @@ func change_sprite(direction):
 func _on_badkuip_on_fire() -> void:
 	badkuip_on_fire = true
 	if !has_fire:
-		die("Your bathtub exploded.\nConsider wearing SunScreen9000(TM) next time.\n(Or nor starting chemical fires.)")
+		die("Your bathtub exploded.\nConsider wearing SunScreen-9000(TM) next time.\n(Or nor starting chemical fires.)")
 
 func _on_badkuip_extinguished() -> void:
 	badkuip_on_fire = false
+
+func _on_cop_looking() -> void:
+	cop_looking = true
+	if !has_invis:
+		die("Busted!")
+
+func _on_cop_leaving() -> void:
+	cop_looking = false
 
 func die(reason: String):
 	if !allowed_to_move: return # so it doesnt break for the unfulfilled orders
@@ -180,11 +176,8 @@ func die(reason: String):
 	allowed_to_move = false
 	$AnimatedSprite2D.stop()
 	
-	var timer := Timer.new()
-	timer.wait_time = 10
-	timer.autostart = true
-	timer.timeout.connect(func ():
+
+	get_tree().create_timer(6).timeout.connect(func ():
 		get_tree().reload_current_scene()
 		($"../Badkuip/BadkuipSprite".texture as AtlasTexture).region.position = Vector2(0, 72)
 	)
-	add_child(timer)
