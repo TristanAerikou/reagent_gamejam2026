@@ -309,6 +309,9 @@ func _on_timeout() -> void:
 	%Orders.add_child.call_deferred(order)
 "
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c1pb6"]
+bg_color = Color(0.3882353, 0.21568628, 0.08627451, 0.7607843)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_si52b"]
 size = Vector2(90, 34)
 
@@ -357,10 +360,6 @@ region = Rect2(48, 0, 16, 32)
 atlas = ExtResource("6_c16ls")
 region = Rect2(48, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_01n6w"]
-atlas = ExtResource("6_c16ls")
-region = Rect2(80, 256, 48, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_7nt27"]
 atlas = ExtResource("6_c16ls")
 region = Rect2(144, 256, 32, 32)
@@ -407,6 +406,18 @@ region = Rect2(0, 96, 16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r6p65"]
 size = Vector2(32, 28)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcnxi"]
+atlas = ExtResource("6_c16ls")
+region = Rect2(80, 256, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58gk3"]
+atlas = ExtResource("4_c1pb6")
+region = Rect2(80, 256, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01n6w"]
+atlas = ExtResource("6_c16ls")
+region = Rect2(80, 256, 48, 32)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bcnxi"]
 size = Vector2(48, 26)
 
@@ -445,26 +456,22 @@ z_index = 2
 offset_left = -144.0
 offset_top = -81.0
 offset_right = -104.0
-offset_bottom = -41.0
+offset_bottom = -51.0
 scale = Vector2(0.75, 0.75)
 metadata/_edit_use_anchors_ = true
 
-[node name="ScoreLabel" type="Label" parent="Camera2D" unique_id=1791488816]
+[node name="Score" type="PanelContainer" parent="Camera2D" unique_id=1767068375]
+offset_left = -144.0
+offset_top = -59.0
+offset_right = -83.0
+offset_bottom = -36.666664
+scale = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_c1pb6")
+
+[node name="ScoreLabel" type="Label" parent="Camera2D/Score" unique_id=1791488816]
 unique_name_in_owner = true
 z_index = 5
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 88.0
-offset_top = 61.0
-offset_right = 149.0
-offset_bottom = 84.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(0.4879681, 0.4879681)
-pivot_offset = Vector2(49.183563, 16.394516)
+layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "Score: 0"
@@ -537,11 +544,6 @@ y_sort_enabled = true
 position = Vector2(-20, -52)
 texture = SubResource("AtlasTexture_6u1mn")
 
-[node name="BadkuipSprite" type="Sprite2D" parent="." unique_id=1979908912]
-y_sort_enabled = true
-position = Vector2(-80, 48)
-texture = SubResource("AtlasTexture_01n6w")
-
 [node name="WCSprite" type="Sprite2D" parent="." unique_id=1060503331]
 position = Vector2(-112, 0)
 texture = SubResource("AtlasTexture_7nt27")
@@ -607,6 +609,13 @@ position = Vector2(-80, 52)
 collision_layer = 4
 collision_mask = 6
 script = ExtResource("6_rt2n2")
+leeg_texture = SubResource("AtlasTexture_bcnxi")
+vol_texture = SubResource("AtlasTexture_58gk3")
+
+[node name="BadkuipSprite" type="Sprite2D" parent="Badkuip" unique_id=1979908912]
+y_sort_enabled = true
+position = Vector2(0, -4)
+texture = SubResource("AtlasTexture_01n6w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Badkuip" unique_id=180214247]
 position = Vector2(0, -1)
