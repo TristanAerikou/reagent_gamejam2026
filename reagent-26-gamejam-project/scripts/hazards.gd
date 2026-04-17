@@ -10,7 +10,7 @@ var random_item: enums.Ingredient
 
 func _on_timeout() -> void:
 	
-	if randi_range(0, 7) == 0:
+	if randi_range(0, 4) == 0:
 		$Cop.animation = "walk_up"
 		%AnimationPlayer.play("cop_move_up")
 	else:
@@ -23,7 +23,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "falling_item":
 		$FallingItem.texture = null
 		%Badkuip.add_ingredient(random_item)
-		wait_time = randi_range(15, 60)
+		wait_time = randi_range(10, 30)
 		start()
 	
 	elif anim_name == "cop_move_up":
@@ -37,5 +37,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		cop_leaving.emit()
 		$Cop.animation = "walk_down"
 		%AnimationPlayer.play("cop_move_down")
-		wait_time = randi_range(15, 60)
+	
+	elif anim_name == "cop_move_down":
+		wait_time = randi_range(10, 30)
 		start()

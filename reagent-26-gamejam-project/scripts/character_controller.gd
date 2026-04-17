@@ -25,7 +25,7 @@ func _process(delta):
 	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	if !allowed_to_move:
 		input_direction = Vector2(0, 0)
-	velocity = input_direction * speed * delta
+	velocity = input_direction * speed
 	change_sprite(input_direction)
 	
 	if Input.is_action_just_pressed("drink"):
@@ -91,7 +91,7 @@ func drink():
 	if matching_speed and !has_speed:
 		speed *= 2
 		has_speed = true
-		get_tree().create_timer(4).timeout.connect(func ():
+		get_tree().create_timer(30).timeout.connect(func ():
 			speed /= 2
 			has_speed = false
 		)
@@ -99,7 +99,7 @@ func drink():
 	elif matching_invis and !has_invis:
 		$AnimatedSprite2D.modulate.a *= 0.2
 		has_invis = true
-		get_tree().create_timer(4).timeout.connect(func ():
+		get_tree().create_timer(30).timeout.connect(func ():
 			$AnimatedSprite2D.modulate.a *= 5
 			has_invis = false
 			if cop_looking:
@@ -110,7 +110,7 @@ func drink():
 		$AnimatedSprite2D.modulate.r *= 0.2
 		$AnimatedSprite2D.modulate.g *= 0.2
 		has_fire = true
-		get_tree().create_timer(4).timeout.connect(func ():
+		get_tree().create_timer(30).timeout.connect(func ():
 			$AnimatedSprite2D.modulate.r *= 5
 			$AnimatedSprite2D.modulate.g *= 5
 			has_fire = false

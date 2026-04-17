@@ -313,6 +313,8 @@ func _on_timeout() -> void:
 	var order := order_template.instantiate()
 	%Orders.add_child.call_deferred(order)
 	order.timeout.connect(%Player.die)
+	if wait_time > 0.25:
+		wait_time -= 0.25
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c1pb6"]
@@ -570,7 +572,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_4w45t"]
 resource_name = "cop_move_down"
-length = 15.0
+length = 8.033334
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -578,7 +580,7 @@ tracks/0/path = NodePath("HazardTimer/Cop:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 15),
+"times": PackedFloat32Array(0, 7.9333334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-143, -33), Vector2(-143, 78)]
@@ -586,7 +588,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_si52b"]
 resource_name = "cop_move_up"
-length = 15.0
+length = 18.066668
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -594,7 +596,7 @@ tracks/0/path = NodePath("HazardTimer/Cop:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 15),
+"times": PackedFloat32Array(0, 18.066668),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-143, 78), Vector2(-143, -33)]
@@ -760,6 +762,7 @@ text = "Score: 0"
 [node name="Player" parent="." unique_id=1772965135 instance=ExtResource("3_7ykc4")]
 unique_name_in_owner = true
 position = Vector2(0, -8)
+speed = 75
 
 [node name="KastHitboxes" type="StaticBody2D" parent="." unique_id=1339769547]
 visible = false
